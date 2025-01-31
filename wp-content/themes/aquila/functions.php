@@ -47,5 +47,11 @@ function aquila_enqueue_scripts()
     wp_enqueue_script('dmss', get_template_directory_uri() . '/assets/switcher/js/dmss.js', ['jquery'], filemtime(get_template_directory() . '/assets/switcher/js/dmss.js'), true);
 
 }
-
+function theme_register_menus() {
+    register_nav_menus([
+        'primary'   => __('Menú Izquierdo', 'aquila'),
+        'secondary' => __('Menú Derecho', 'aquila'),
+    ]);
+}
 add_action('wp_enqueue_scripts', 'aquila_enqueue_scripts');
+add_action('after_setup_theme', 'theme_register_menus');
